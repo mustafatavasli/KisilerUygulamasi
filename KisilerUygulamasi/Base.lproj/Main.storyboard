@@ -16,18 +16,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ros-pl-QG8">
-                                <rect key="frame" x="173" y="431" width="69" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Detay"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="8PV-OS-QdA">
+                                <rect key="frame" x="0.0" y="153" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="btnDetay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="00t-ve-onO"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="tki-Mg-mgN"/>
                                 </connections>
-                            </button>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="gN6-sX-juI">
+                                <rect key="frame" x="0.0" y="208.5" width="414" height="653.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="kisilerHucre" id="efu-nm-Kna" customClass="KisilerHucre" customModule="KisilerUygulamasi" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="efu-nm-Kna" id="hBD-Xu-rwf">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="zxS-gx-X0h">
+                                                    <rect key="frame" x="36" y="15" width="59" height="70"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uen-zm-1EI">
+                                                            <rect key="frame" x="0.0" y="0.0" width="59" height="30"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uIC-Ge-X54">
+                                                            <rect key="frame" x="0.0" y="46" width="59" height="24"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="zxS-gx-X0h" firstAttribute="leading" secondItem="hBD-Xu-rwf" secondAttribute="leadingMargin" constant="16" id="ToR-GO-BMu"/>
+                                                <constraint firstItem="zxS-gx-X0h" firstAttribute="centerY" secondItem="hBD-Xu-rwf" secondAttribute="centerY" id="UcS-dW-ctM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblKisiAdi" destination="Uen-zm-1EI" id="mTV-NT-rgm"/>
+                                            <outlet property="lblTelefonNumarasi" destination="uIC-Ge-X54" id="4ze-DQ-adx"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8PV-OS-QdA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="IVc-GM-3PR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gN6-sX-juI" secondAttribute="bottom" id="KzU-D3-iLb"/>
+                            <constraint firstItem="8PV-OS-QdA" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="PB3-hG-WRF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gN6-sX-juI" secondAttribute="trailing" id="RCZ-Lc-83S"/>
+                            <constraint firstItem="gN6-sX-juI" firstAttribute="top" secondItem="8PV-OS-QdA" secondAttribute="bottom" id="aOQ-yS-dkA"/>
+                            <constraint firstItem="8PV-OS-QdA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bYh-ek-5oV"/>
+                            <constraint firstItem="gN6-sX-juI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="v76-X7-sLj"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Kişiler" id="ZdR-Xn-0p5">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="1kw-x3-zCt">
@@ -37,6 +85,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="kisilerTableView" destination="gN6-sX-juI" id="ycT-yV-sWJ"/>
+                        <outlet property="searchBar" destination="8PV-OS-QdA" id="lfw-zv-WXh"/>
                         <segue destination="pK7-LS-3Ss" kind="show" identifier="toKisiDetay" id="d3B-UU-nOu"/>
                     </connections>
                 </viewController>
