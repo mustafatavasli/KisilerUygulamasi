@@ -28,6 +28,10 @@ class KisiListe: UIViewController {
         kisilerListesi.append(kisi3)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print("Ana Sayfa'ya Dönüş Yapıldı")
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toKisiDetay" {
             if let kisi = sender as? Kisiler {
@@ -57,5 +61,27 @@ extension KisiListe : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return kisilerListesi.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let kisi = kisilerListesi[indexPath.row]
+        performSegue(withIdentifier: "toKisiDetay", sender: kisi)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let silAction = UIContextualAction(style: .destructive, title: "Sil") {contextualAction,view,bool in
+            let kisi = self.kisilerListesi[indexPath.row]
+            
+            let alert = UIAlertController(title: "Silme İşlemi", message: "\(kisi.ad!) Kişisi Silinsin Mi?", preferredStyle: .alert)
+            let iptalAction = UIAlertAction(title: "İptal", style: .cancel)
+            let evetAction = UIAlertAction(title: "Evet", style: .destructive) { action in
+                print("Kişi Sil: \(kisi.id!)")
+            }
+            alert.addAction(iptalAction)
+            alert.addAction(evetAction)
+            self.present(alert, animated: true)
+        }
+        return UISwipeActionsConfiguration(actions: [silAction])
     }
 }
